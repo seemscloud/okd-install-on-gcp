@@ -106,6 +106,7 @@ EndOfMessage
 ```
 
 ```bash
+openshift-install create install-config --dir install_dir
 openshift-install create cluster --dir install_dir
 
 openshift-install wait-for bootstrap-complete --dir install_dir
