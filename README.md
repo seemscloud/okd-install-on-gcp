@@ -104,3 +104,8 @@ openshift-install wait-for install-complete --dir install_dir
 
 openshift-install destroy cluster --dir install_dir
 ```
+
+```bash
+mkdir -p .kube/
+cp install_dir/auth/kubeconfig .kube/config
+```
