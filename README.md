@@ -12,8 +12,6 @@ GCP_PROJ="core-337701"
 GCP_SA=bbb-okd
 GCP_DOMAIN=bbb.seems.cloud
 
-GCP_PROJ=`gcloud projects list --format=json | jq -r ".[] | select(.projectId == \"${GCP_PROJ}\") | .projectId"`
-
 echo -e "Project:\t\t${GCP_PROJ}\nService Account:\t${GCP_SA}\nDomain:\t\t\t${GCP_DOMAIN}"
 
 gcloud projects list
