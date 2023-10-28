@@ -59,11 +59,6 @@ controlPlane:
       osDisk:
         diskType: pd-ssd
         diskSizeGB: 192
-      tags:
-        - test-okd
-        - test-okd-control-plane
-        - test-okd-master
-        - all
   replicas: 3
 compute:
   - hyperthreading: Enabled
@@ -77,11 +72,6 @@ compute:
         osDisk:
           diskType: pd-ssd
           diskSizeGB: 192
-          tags:
-            - test-okd
-            - test-okd-compute
-            - test-okd-worker
-            - all
     replicas: 2
 networking:
   clusterNetwork:
