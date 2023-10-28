@@ -8,33 +8,39 @@ wget "${GH_PROJ}/releases/download/${OKD_VERSION_AAA}/openshift-client-linux-${O
 ```
 
 ```bash
+GCP_PROJ="core-337701"
+GCP_SA=bbb-okd
+GCP_DOMAIN=bbb.seems.cloud
+
+GCP_PROJ=`gcloud projects list --format=json | jq -r ".[] | select(.projectId == \"${GCP_PROJ}\") | .projectId"`
+
+echo -e "Project:\t\t${GCP_PROJ}\nService Account:\t${GCP_SA}\nDomain:\t\t\t${GCP_DOMAIN}"
+
 gcloud projects list
 gcloud config set project
 
-export GCP_PROJECT=XXXX
-export GCP_SA=bbb-okd
-export GCP_DOMAIN=bbb.seems.cloud
+
 
 gcloud config set compute/region europe-central2
 gcloud config set compute/zone europe-central2-b
 
 gcloud config list
 
-gcloud services enable compute.googleapis.com --project ${GCP_PROJECT}
-gcloud services enable cloudapis.googleapis.com --project ${GCP_PROJECT}
-gcloud services enable cloudresourcemanager.googleapis.com --project ${GCP_PROJECT}
-gcloud services enable dns.googleapis.com --project ${GCP_PROJECT}
-gcloud services enable iamcredentials.googleapis.com --project ${GCP_PROJECT}
-gcloud services enable iam.googleapis.com --project ${GCP_PROJECT}
-gcloud services enable servicemanagement.googleapis.com --project ${GCP_PROJECT}
-gcloud services enable serviceusage.googleapis.com --project ${GCP_PROJECT}
-gcloud services enable storage-api.googleapis.com --project ${GCP_PROJECT}
-gcloud services enable storage-component.googleapis.com --project ${GCP_PROJECT}
+gcloud services enable compute.googleapis.com --project ${GCP_PROJ}
+gcloud services enable cloudapis.googleapis.com --project ${GCP_PROJ}
+gcloud services enable cloudresourcemanager.googleapis.com --project ${GCP_PROJ}
+gcloud services enable dns.googleapis.com --project ${GCP_PROJ}
+gcloud services enable iamcredentials.googleapis.com --project ${GCP_PROJ}
+gcloud services enable iam.googleapis.com --project ${GCP_PROJ}
+gcloud services enable servicemanagement.googleapis.com --project ${GCP_PROJ}
+gcloud services enable serviceusage.googleapis.com --project ${GCP_PROJ}
+gcloud services enable storage-api.googleapis.com --project ${GCP_PROJ}
+gcloud services enable storage-component.googleapis.com --project ${GCP_PROJ}
 
 gcloud iam service-accounts create ${GCP_SA}
 
-gcloud projects add-iam-policy-binding ${GCP_PROJECT} \
-  --member "serviceAccount:${GCP_SA}@${GCP_PROJECT}.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding ${GCP_PROJ} \
+  --member "serviceAccount:${GCP_SA}@${GCP_PROJ}.iam.gserviceaccount.com" \
   --role "roles/owner"
 ```
 
