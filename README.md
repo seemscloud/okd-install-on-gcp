@@ -56,6 +56,8 @@ cat > install_dir/install-config.yaml << "EndOfMessage"
 apiVersion: v1
 baseDomain: bbb.seems.cloud
 credentialsMode: Mint
+metadata:
+  name: test
 controlPlane:
   hyperthreading: Enabled
   name: master
@@ -69,8 +71,9 @@ controlPlane:
         diskType: pd-ssd
         diskSizeGB: 192
       tags:
-        - okd
-        - okd-master
+        - test-okd
+        - test-okd-control-plane
+        - test-okd-master
         - all
   replicas: 3
 compute:
@@ -86,12 +89,11 @@ compute:
           diskType: pd-ssd
           diskSizeGB: 192
         tags:
-          - okd
-          - okd-worker
+          - test-okd
+          - test-okd-compute
+          - test-okd-worker
           - all
     replicas: 2
-metadata:
-  name: okd
 networking:
   clusterNetwork:
     - cidr: 10.128.0.0/14
@@ -111,7 +113,7 @@ platform:
     computeSubnet: compute
     defaultMachinePlatform:
       tags:
-        - okd
+        - test-okd
         - all
 pullSecret: '{"auths": {"fake":{"auth":"fake"}}}'
 sshKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCxMR6x6rHclUBQI3IQVPZN8xjkAVVAZmS1PV/hNg/XPc5sl5fI7/3FLmwu+A9PDuiPu5++60Ns4NtYJcd+hVQ9m/htl6DGPeUoflin1pmVFSfKMUctTRWsl+e2ldt3CVmTgFclLABdLDR+cSb3jSqNXgonzjNcWbTfhrsSnqNuD+2GxXpGZXc4rYDloSrlGVOx0mEiyJrMocJFuVlh1JB8Os0KNnx5qD56h5zIRLGkhHhgXIO5kJ+hNB+vF3FV2Fq9Ar47+DrQiD/o9/h17HFDvD0tzze1GLYAJs4QcFJJPKdWM1kHyXa/p9TIFLc3rVnCrVx1NihgaEhiY+d452otV0p1Bq1tvotfPJ92BDSNlF7A1YuJNYqRkNNpwSPMznPQtVkeRCHTNH5MmMqhPptGEPLiDlkMUZeFFjTKz0IDo6QCX05WBl+SXYLo1l2R9jCoKstmoKvlsFY6fcYpSYj78X9E4bIX++LSLiG9oGXwg2xoZTlwofhqjnI+xc9tMiU=
