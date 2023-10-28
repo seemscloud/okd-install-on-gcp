@@ -1,4 +1,8 @@
 ```bash
+wget https://github.com/okd-project/okd/releases/download/4.12.0-0.okd-2023-03-18-084815/openshift-install-linux-4.12.0-0.okd-2023-03-18-084815.tar.gz
+```
+
+```bash
 gcloud projects list
 gcloud config set project
 
