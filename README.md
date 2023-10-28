@@ -15,8 +15,6 @@ GCP_DOMAIN=bbb.seems.cloud
 echo -e "Project:\t\t${GCP_PROJ}\nService Account:\t${GCP_SA}\nDomain:\t\t\t${GCP_DOMAIN}"
 
 gcloud config set project "${GCP_PROJ}"
-
-
 gcloud config set compute/region europe-central2
 gcloud config set compute/zone europe-central2-b
 
