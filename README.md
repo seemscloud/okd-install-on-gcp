@@ -48,6 +48,8 @@ openshift-install wait-for install-complete --dir install_dir
 openshift-install destroy cluster --dir install_dir
 ```
 
+`install-config.yaml`
+
 ```yaml
 apiVersion: v1
 baseDomain: bbb.seems.cloud
