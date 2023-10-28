@@ -46,7 +46,7 @@ apiVersion: v1
 baseDomain: bbb.seems.cloud
 credentialsMode: Mint
 metadata:
-  name: test
+  name: test-okd
 controlPlane:
   hyperthreading: Enabled
   name: master
