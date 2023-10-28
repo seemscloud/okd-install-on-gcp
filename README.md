@@ -77,11 +77,11 @@ compute:
         osDisk:
           diskType: pd-ssd
           diskSizeGB: 192
-        tags:
-          - test-okd
-          - test-okd-compute
-          - test-okd-worker
-          - all
+          tags:
+            - test-okd
+            - test-okd-compute
+            - test-okd-worker
+            - all
     replicas: 2
 networking:
   clusterNetwork:
