@@ -115,14 +115,19 @@ touch /run/machine-config-daemon-force
 ```
 
 ```bash
-wget https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/37.20230218.3.0/x86_64/fedora-coreos-37.20230218.3.0-gcp.x86_64.tar.gz
+FCOS_URL="https://builds.coreos.fedoraproject.org/prod/streams/stable"
+FCOS_VER="37.20230218.3.0"
+FCOS_BUILD="fedora-coreos-${FCOS_VER}-gcp.x86_64"
+FCOS_BUILD_DEDOT=`echo "${FCOS_BUILD}" | sed -E "s/\.|_/-/g"`
+
+wget ${FCOS_URL}/builds/${FCOS_VER}/x86_64/${FCOS_BUILD}.tar.gz
 
 gcloud storage cp \
-  fedora-coreos-37.20230218.3.0-gcp.x86_64.tar.gz \
+  ${FCOS_BUILD}.tar.gz \
   gs://fedora-coreos-images
 
 gcloud compute images create \
-  "fedora-coreos-37-20230218-3-0-gcp-x86-64" \
+  "${FCOS_BUILD_DEDOT}" \
   --guest-os-features=UEFI_COMPATIBLE \
-  --source-uri="gs://fedora-coreos-images/fedora-coreos-37.20230218.3.0-gcp.x86_64.tar.gz"
+  --source-uri="gs://fedora-coreos-images/${FCOS_BUILD}.tar.gz"
 ```
