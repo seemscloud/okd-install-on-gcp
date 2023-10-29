@@ -109,3 +109,20 @@ openshift-install destroy cluster --dir install_dir
 mkdir -p .kube/
 cp install_dir/auth/kubeconfig .kube/config
 ```
+
+```bash
+touch /run/machine-config-daemon-force
+```
+
+```bash
+wget https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/37.20230218.3.0/x86_64/fedora-coreos-37.20230218.3.0-gcp.x86_64.tar.gz
+
+gcloud storage cp \
+  fedora-coreos-37.20230218.3.0-gcp.x86_64.tar.gz \
+  gs://fedora-coreos-images
+
+gcloud compute images create \
+  "fedora-coreos-37-20230218-3-0-gcp-x86-64" \
+  --guest-os-features=UEFI_COMPATIBLE \
+  --source-uri="gs://fedora-coreos-images/fedora-coreos-37.20230218.3.0-gcp.x86_64.tar.gz"
+```
