@@ -1,10 +1,9 @@
 ```bash
 GH_PROJ="https://github.com/okd-project/okd"
+OKD_VER="4.11.0-0.okd-2022-12-02-145640"
 
-OKD_VERSION_AAA="4.11.0-0.okd-2022-12-02-145640"
-
-wget "${GH_PROJ}/releases/download/${OKD_VERSION_AAA}/openshift-install-linux-${OKD_VERSION_AAA}.tar.gz"
-wget "${GH_PROJ}/releases/download/${OKD_VERSION_AAA}/openshift-client-linux-${OKD_VERSION_AAA}.tar.gz"
+wget "${GH_PROJ}/releases/download/${OKD_VERSION_AAA}/openshift-install-linux-${OKD_VER}.tar.gz"
+wget "${GH_PROJ}/releases/download/${OKD_VERSION_AAA}/openshift-client-linux-${OKD_VER}.tar.gz"
 ```
 
 ```bash
